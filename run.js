@@ -5,26 +5,21 @@ const firstOperand = document.getElementById("first-operand")
 const secondOperand = document.getElementById("second-operand")
 const operator = document.getElementById("operator")
 const number = document.getElementById("number")
-// function showDisplay(e) {
-//     console.log(buttonSelect)
 
-// }
+const operands = {
+    first: 0,
+    second: 0,
+}
+console.log(operands)
 
-buttonSelect.forEach((press) => press.addEventListener('click', action))
+buttonSelect.forEach(item => item.addEventListener("click", (e) => { updateOperands(item) }))
 
-function action(e) {
-    const li = e.currentTarget;
-    const input = li.innerText;
-    console.log(li.id)
-    console.log(input)
-
-    if (Number.isInteger(+input)) {
-
-        console.log("works")
-    }
-
-    else {
-        return console.log("operator!")
+function updateOperands(input) {
+    if (input.id === "number") {
+        console.log("work")
+        operands.first = input.textContent
+        console.log(operands)
+        display.innerText += operands.first
     }
 }
 
