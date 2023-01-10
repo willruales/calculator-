@@ -27,10 +27,7 @@ function updateOperands(input) {
 
         display.innerText += operands.operator
     }
-    while (operands.first) {
-        operands.second = input.textContent
 
-    }
     console.log(operands)
 }
 
