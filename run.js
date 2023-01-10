@@ -8,6 +8,7 @@ const number = document.getElementById("number")
 
 const operands = {
     first: 0,
+    operator: 0,
     second: 0,
 }
 console.log(operands)
@@ -16,11 +17,21 @@ buttonSelect.forEach(item => item.addEventListener("click", (e) => { updateOpera
 
 function updateOperands(input) {
     if (input.id === "number") {
-        console.log("work")
         operands.first = input.textContent
-        console.log(operands)
+
         display.innerText += operands.first
     }
+    else if (input.id === "operator") {
+
+        operands.operator = input.textContent
+
+        display.innerText += operands.operator
+    }
+    while (operands.first) {
+        operands.second = input.textContent
+
+    }
+    console.log(operands)
 }
 
 
