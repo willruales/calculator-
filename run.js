@@ -7,17 +7,17 @@ const operator = document.getElementById("operator")
 const number = document.getElementById("number")
 
 const operands = {
-    first: 0,
-    operator: 0,
-    second: 0,
+    first: "",
+    operator: "",
+    second: "",
 }
 console.log(operands)
 
 buttonSelect.forEach(item => item.addEventListener("click", (e) => { updateOperands(item) }))
 
 function updateOperands(input) {
-    if (input.id === "number") {
-        operands.first = input.textContent
+    if (!operands.operator && input.id === "number") {
+        operands.first += input.textContent
 
         display.innerText += operands.first
     }
@@ -26,6 +26,11 @@ function updateOperands(input) {
         operands.operator = input.textContent
 
         display.innerText += operands.operator
+    }
+
+    else if (operands.first && operands.operator) {
+        operands.second += input.textContent
+        display.innerText += operands.second
     }
 
     console.log(operands)
