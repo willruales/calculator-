@@ -16,8 +16,12 @@ console.log(operands)
 buttonSelect.forEach(item => item.addEventListener("click", (e) => { updateOperands(item) }))
 
 function updateOperands(input) {
+    //let number = parseInt(input.innerText)
+    //console.log(typeof number)
+
+
     if (!operands.operator && input.id === "number") {
-        operands.first += input.textContent
+        operands.first += number
 
         display.innerText += operands.first
     }
