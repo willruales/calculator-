@@ -7,7 +7,7 @@ const operator = document.getElementById("operator")
 const number = document.getElementById("number")
 
 const operands = {
-    first: "",
+    first: 0,
     operator: "",
     second: "",
 }
@@ -16,13 +16,12 @@ console.log(operands)
 buttonSelect.forEach(item => item.addEventListener("click", (e) => { updateOperands(item) }))
 
 function updateOperands(input) {
-    //let number = parseInt(input.innerText)
-    //console.log(typeof number)
+    let number = parseInt(input.innerText)
+    //console.log(typeof thing)
 
 
     if (!operands.operator && input.id === "number") {
         operands.first += number
-
         display.innerText += operands.first
     }
     else if (input.id === "operator") {
