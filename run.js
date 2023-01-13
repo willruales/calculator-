@@ -7,7 +7,7 @@ const operator = document.getElementById("operator")
 const number = document.getElementById("number")
 
 const operands = {
-    first: 0,
+    first: "",
     operator: "",
     second: "",
 }
