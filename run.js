@@ -16,7 +16,7 @@ const operands = {
         let b = parseInt(this.second)
         let o = this.operator
         console.log("test works")
-        // console.log(add(a, b))
+        console.log(add(a, b))
 
         //return operate(o, a, b)
     }
