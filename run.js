@@ -5,11 +5,16 @@ const firstOperand = document.getElementById("first-operand")
 const secondOperand = document.getElementById("second-operand")
 const operator = document.getElementById("operator")
 const number = document.getElementById("number")
+const equals = document.getElementById("equals")
 
 const operands = {
     first: "",
     operator: "",
     second: "",
+    test: function () {
+        let a = this.first
+        console.log(a)
+    }
 }
 console.log(operands)
 
@@ -37,6 +42,7 @@ function updateOperands(input) {
     }
 
     console.log(operands)
+    operands.test()
 }
 
 
