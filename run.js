@@ -21,7 +21,7 @@ function updateOperands(input) {
 
 
     if (!operands.operator && input.id === "number") {
-        operands.first += number
+        operands.first += input.textContent
         display.innerText += operands.first
     }
     else if (input.id === "operator") {
