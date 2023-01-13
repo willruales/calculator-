@@ -12,8 +12,13 @@ const operands = {
     operator: "",
     second: "",
     test: function () {
-        let a = this.first
-        console.log(a)
+        let a = parseInt(this.first)
+        let b = parseInt(this.second)
+        let o = this.operator
+        console.log("test works")
+        // console.log(add(a, b))
+
+        //return operate(o, a, b)
     }
 }
 console.log(operands)
@@ -21,7 +26,7 @@ console.log(operands)
 buttonSelect.forEach(item => item.addEventListener("click", (e) => { updateOperands(item) }))
 
 function updateOperands(input) {
-    let number = parseInt(input.innerText)
+    //let number = parseInt(input.innerText)
     //console.log(typeof thing)
 
 
@@ -36,18 +41,20 @@ function updateOperands(input) {
         display.innerText += operands.operator
     }
 
-    else if (operands.first && operands.operator) {
+    else if (operands.first && operands.operator && input.id === "number") {
         operands.second += input.textContent
         display.innerText += operands.second
     }
+    else if (input.id === "equals") {
+        console.log(operands)
+        operands.test()
+    }
 
-    console.log(operands)
-    operands.test()
 }
 
 
 
-const add = function (a, b) {
+function add(a, b) {
     return a + b
 };
 
@@ -65,24 +72,22 @@ const divide = function (a, b) {
 
 };
 
-function operate(operator, lastInput, currentInput) {
+function operate(operator, a, b) {
     switch (operator) {
         case '+':
-            return add(lastInput, currentInput);
+            return add(a, b);
             break;
         case '-':
-            return subtract(lastInput, currentInput);
+            return subtract(a, b);
             break;
         case "/":
-            return divide(lastInput, currentInput)
+            return divide(a, b)
             break;
         case '*':
-            return multiply(lastInput, currentInput)
+            return multiply(a, b)
         case "C":
             return cancel();
         case "AC":
             return reset();
     }
-
-
 }
