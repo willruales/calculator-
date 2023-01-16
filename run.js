@@ -15,10 +15,18 @@ const operands = {
         let a = parseInt(this.first)
         let b = parseInt(this.second)
         let o = this.operator
-        console.log("test works")
-        console.log(add(a, b))
+        console.log("see() works")
+        return { a, b, o }
 
-        //return operate(o, a, b)
+    },
+
+    see: function () {
+        //this.test()
+        let test = this.test()
+        let a = test.a;
+        let b = test.b
+        let o = test.o
+        operate(o, a, b)
     }
 }
 console.log(operands)
