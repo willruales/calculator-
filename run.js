@@ -63,16 +63,19 @@ function updateOperands(input) {
 
 
 function add(a, b) {
-    return console.log(a + b)
+
+    operands.first = a += b //answer
+    return console.log("first test", operands.first)
 };
 
 const subtract = function (a, b) {
-    return console.log(a - b)
+    operands.first = a -= b
+    return console.log("second test", operands.first)
 };
 
 
 const multiply = function (a, b) {
-    return a * b
+    return a *= b
 };
 
 const divide = function (a, b) {
@@ -81,6 +84,7 @@ const divide = function (a, b) {
 };
 
 function operate(operator, a, b) {
+    operands.second = ""
     switch (operator) {
         case '+':
             return add(a, b);
