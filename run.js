@@ -32,18 +32,18 @@ function updateOperands(input) {
 
     if (!operands.operator && input.id === "number") {
         operands.first += input.textContent
-        display.innerText += operands.first
+        display.innerText += input.textContent
     }
     else if (input.id === "operator") {
 
         operands.operator = input.textContent
 
-        display.innerText += operands.operator
+        display.innerText += input.textContent
     }
 
     else if (operands.first && operands.operator && input.id === "number") {
         operands.second += input.textContent
-        display.innerText += operands.second
+        display.innerText += input.textContent
     }
     else if (input.id === "equals") {
         console.log(operands)
