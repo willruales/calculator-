@@ -55,7 +55,7 @@ function updateOperands(input) {
     }
     else if (input.id === "equals") {
         console.log(operands)
-        operands.test()
+        operands.see()
     }
 
 }
@@ -63,11 +63,11 @@ function updateOperands(input) {
 
 
 function add(a, b) {
-    return a + b
+    console.log(a + b)
 };
 
 const subtract = function (a, b) {
-    return a - b
+    console.log(a - b)
 };
 
 
