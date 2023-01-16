@@ -16,9 +16,18 @@ const operands = {
         let b = parseInt(this.second)
         let o = this.operator
         console.log("test works")
-        console.log(add(a, b))
+        return { a, b, o }
+        //operate(o, a, b)
+    },
 
-        //return operate(o, a, b)
+    see: function () {
+        //this.test()
+        let test = this.test()
+        let a = test.a;
+        let b = test.b
+        let o = test.o
+        //console.log(add(a, b))
+        operate(o, a, b)
     }
 }
 console.log(operands)
@@ -47,7 +56,7 @@ function updateOperands(input) {
     }
     else if (input.id === "equals") {
         console.log(operands)
-        operands.test()
+        operands.see()
     }
 
 }
@@ -55,11 +64,11 @@ function updateOperands(input) {
 
 
 function add(a, b) {
-    return a + b
+    return console.log(a + b)
 };
 
 const subtract = function (a, b) {
-    return a - b
+    return console.log(a - b)
 };
 
 
