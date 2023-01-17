@@ -15,7 +15,6 @@ const operands = {
         let b = parseInt(this.second)
         let o = this.operator
         console.log("see() works")
-        //return { a, b, o }
         operate(o, a, b)
     },
 }
@@ -24,7 +23,6 @@ console.log(operands)
 buttonSelect.forEach(item => item.addEventListener("click", (e) => { updateOperands(item) }))
 
 function updateOperands(input) {
-
     if (!operands.operator && input.id === "number") {
         operands.first += input.textContent
         display.innerText += input.textContent
@@ -48,6 +46,7 @@ function updateOperands(input) {
     else if (input.id === "equals") {
         console.log(operands)
         operands.test()
+        firstDisplay.innerText += operands.first
     }
 
 }
@@ -56,8 +55,6 @@ function add(a, b) {
 
     operands.first = a += b //answer
     console.log("first test", operands.first)
-    // firstDisplay.innerText += operands.first
-    //return firstDisplay.innerText += operands.first
 };
 
 const subtract = function (a, b) {
@@ -77,7 +74,6 @@ const divide = function (a, b) {
 
 function operate(operator, a, b) {
     operands.second = ""
-    // firstDisplay.innerText += a;
     switch (operator) {
         case '+':
             return add(a, b);
