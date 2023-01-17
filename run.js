@@ -17,6 +17,9 @@ const operands = {
         console.log("see() works")
         operate(o, a, b)
     },
+    answer: function () {
+        firstDisplay.innerText = operands.first
+    }
 }
 console.log(operands)
 
@@ -30,7 +33,7 @@ function updateOperands(input) {
     else if (operands.second && input.id === "operator") {
         console.log(operands)
         operands.test()
-        firstDisplay.innerText += operands.first
+        operands.answer()
     }
     else if (input.id === "operator") {
 
@@ -46,7 +49,8 @@ function updateOperands(input) {
     else if (input.id === "equals") {
         console.log(operands)
         operands.test()
-        firstDisplay.innerText += operands.first
+        //firstDisplay.innerText += operands.first
+        operands.answer()
     }
 
 }
