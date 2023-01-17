@@ -16,8 +16,8 @@ const operands = {
         let b = parseInt(this.second)
         let o = this.operator
         console.log("see() works")
-        return { a, b, o }
-
+        //return { a, b, o }
+        operate(o, a, b)
     },
 
     see: function () {
@@ -42,6 +42,10 @@ function updateOperands(input) {
         operands.first += input.textContent
         display.innerText += input.textContent
         //firstOperand.innerText += input.textContent
+    }
+    else if (operands.second && input.id === "operator") {
+        console.log(operands)
+        operands.test()
     }
     else if (input.id === "operator") {
 
