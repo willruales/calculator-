@@ -67,11 +67,17 @@ button:active {
 .display {
     background-color: yellow;
     grid-column: 1/4;
+    display: table;
 }
 
 #first-operator {
     background-color: pink;
-    margin-left: 75%;
+    size: 50%;
+}
+
+#second-operator {
+    background: rgb(46, 109, 37);
+    size: 50%;
 }
 
 .grid {

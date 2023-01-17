@@ -1,8 +1,7 @@
 const button = document.querySelector(".grid")
 const buttonSelect = button.querySelectorAll("button")
-const display = document.querySelector(".display")
-const firstOperand = document.getElementById("first-operator")
-const secondOperand = document.getElementById("second-operand")
+const display = document.getElementById("first-operator")
+const firstDisplay = document.getElementById("second-operator")
 const operator = document.getElementById("operator")
 const number = document.getElementById("number")
 const equals = document.getElementById("equals")
@@ -16,31 +15,22 @@ const operands = {
         let b = parseInt(this.second)
         let o = this.operator
         console.log("see() works")
-        return { a, b, o }
-
-    },
-
-    see: function () {
-        //this.test()
-        let test = this.test()
-        let a = test.a;
-        let b = test.b
-        let o = test.o
         operate(o, a, b)
-    }
+    },
 }
 console.log(operands)
 
 buttonSelect.forEach(item => item.addEventListener("click", (e) => { updateOperands(item) }))
 
 function updateOperands(input) {
-    //let number = parseInt(input.innerText)
-    //console.log(typeof thing)
-
-
     if (!operands.operator && input.id === "number") {
         operands.first += input.textContent
-        display.innerText += operands.first
+        display.innerText += input.textContent
+    }
+    else if (operands.second && input.id === "operator") {
+        console.log(operands)
+        operands.test()
+        firstDisplay.innerText += operands.first
     }
     else if (input.id === "operator") {
 
@@ -55,18 +45,16 @@ function updateOperands(input) {
     }
     else if (input.id === "equals") {
         console.log(operands)
-        operands.see()
+        operands.test()
+        firstDisplay.innerText += operands.first
     }
 
 }
-
-
 
 function add(a, b) {
 
     operands.first = a += b //answer
     console.log("first test", operands.first)
-    console.log(firstOperand.innerText += operands.first)
 };
 
 const subtract = function (a, b) {
@@ -86,7 +74,6 @@ const divide = function (a, b) {
 
 function operate(operator, a, b) {
     operands.second = ""
-    // firstOperand.innerText += a;
     switch (operator) {
         case '+':
             return add(a, b);
