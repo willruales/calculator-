@@ -1,7 +1,7 @@
 const button = document.querySelector(".grid")
 const buttonSelect = button.querySelectorAll("button")
 const display = document.querySelector(".display")
-const firstOperand = document.getElementById("first-operand")
+const firstOperand = document.getElementById("first-operator")
 const secondOperand = document.getElementById("second-operand")
 const operator = document.getElementById("operator")
 const number = document.getElementById("number")
@@ -41,6 +41,7 @@ function updateOperands(input) {
     if (!operands.operator && input.id === "number") {
         operands.first += input.textContent
         display.innerText += input.textContent
+        //firstOperand.innerText += input.textContent
     }
     else if (input.id === "operator") {
 
@@ -65,7 +66,8 @@ function updateOperands(input) {
 function add(a, b) {
 
     operands.first = a += b //answer
-    return console.log("first test", operands.first)
+    console.log("first test", operands.first)
+    return firstOperand.innerText += operands.first
 };
 
 const subtract = function (a, b) {
@@ -85,6 +87,7 @@ const divide = function (a, b) {
 
 function operate(operator, a, b) {
     operands.second = ""
+    // firstOperand.innerText += a;
     switch (operator) {
         case '+':
             return add(a, b);

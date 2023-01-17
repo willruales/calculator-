@@ -69,6 +69,11 @@ button:active {
     grid-column: 1/4;
 }
 
+#first-operator {
+    background-color: pink;
+    margin-left: 75%;
+}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(4, 100px);
