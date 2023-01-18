@@ -1,4 +1,5 @@
 const button = document.querySelector(".grid")
+const action = document.getElementById(".action")
 const buttonSelect = button.querySelectorAll("button")
 const display = document.getElementById("first-operator")
 const firstDisplay = document.getElementById("second-operator")
@@ -10,15 +11,17 @@ const operands = {
     first: "",
     operator: "",
     second: "",
+    action: "",
     test: function () {
         let a = parseInt(this.first)
         let b = parseInt(this.second)
         let o = this.operator
-        console.log("see() works")
         operate(o, a, b)
     },
     answer: function () {
-        firstDisplay.innerText = operands.first
+        let action = this.action
+        console.log(action)
+        operate(action)
     }
 }
 console.log(operands)
@@ -33,7 +36,7 @@ function updateOperands(input) {
     else if (operands.second && input.id === "operator") {
         console.log(operands)
         operands.test()
-        operands.answer()
+        equal()
     }
     else if (input.id === "operator") {
 
@@ -46,35 +49,40 @@ function updateOperands(input) {
         operands.second += input.textContent
         display.innerText += input.textContent
     }
-    else if (input.id === "equals") {
+
+    else if (input.id === "action") {
         console.log(operands)
+        operands.action += input.textContent
         operands.test()
-        //firstDisplay.innerText += operands.first
         operands.answer()
+
     }
 
 }
 
 function add(a, b) {
-
     operands.first = a += b //answer
-    console.log("first test", operands.first)
 };
 
 const subtract = function (a, b) {
     operands.first = a -= b
-    return console.log("second test", operands.first)
 };
 
-
 const multiply = function (a, b) {
-    return a *= b
+    operands.first = a *= b
 };
 
 const divide = function (a, b) {
-    return a, b
+    operands.first = a /= b
 
 };
+
+const equal = function () {
+    operands.action = ""
+    operands.second = ""
+    display.innerText = operands.first
+    firstDisplay.innerText = operands.first
+}
 
 function operate(operator, a, b) {
     operands.second = ""
@@ -94,5 +102,7 @@ function operate(operator, a, b) {
             return cancel();
         case "AC":
             return reset();
+        case "=":
+            return equal();
     }
 }
