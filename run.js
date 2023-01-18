@@ -1,5 +1,5 @@
 const button = document.querySelector(".grid")
-const action = document.getElementById(".action")
+const action = document.getElementById("action")
 const buttonSelect = button.querySelectorAll("button")
 const display = document.getElementById("first-operator")
 const firstDisplay = document.getElementById("second-operator")
@@ -17,10 +17,13 @@ const operands = {
         let b = parseInt(this.second)
         let o = this.operator
         operate(o, a, b)
+        equal()
     },
     answer: function () {
         let action = this.action
-        console.log(action)
+        if (action === "=") {
+            this.test()
+        }
         operate(action)
     }
 }
@@ -36,12 +39,10 @@ function updateOperands(input) {
     else if (operands.second && input.id === "operator") {
         console.log(operands)
         operands.test()
-        equal()
+        display.innerText += input.textContent
     }
     else if (input.id === "operator") {
-
         operands.operator = input.textContent
-
         display.innerText += input.textContent
     }
 
@@ -51,9 +52,7 @@ function updateOperands(input) {
     }
 
     else if (input.id === "action") {
-        console.log(operands)
         operands.action += input.textContent
-        operands.test()
         operands.answer()
 
     }
@@ -61,7 +60,7 @@ function updateOperands(input) {
 }
 
 function add(a, b) {
-    operands.first = a += b //answer
+    operands.first = a += b
 };
 
 const subtract = function (a, b) {
@@ -77,6 +76,16 @@ const divide = function (a, b) {
 
 };
 
+const reset = function () {
+    Object.assign(operands, { first: "", second: "", operator: "", action: "" })
+    display.innerText = "";
+    firstDisplay.innerText = "";
+}
+
+const cancel = function () {
+    console.log("C WORKS")
+}
+
 const equal = function () {
     operands.action = ""
     operands.second = ""
@@ -89,13 +98,10 @@ function operate(operator, a, b) {
     switch (operator) {
         case '+':
             return add(a, b);
-            break;
         case '-':
             return subtract(a, b);
-            break;
         case "/":
             return divide(a, b)
-            break;
         case '*':
             return multiply(a, b)
         case "C":
