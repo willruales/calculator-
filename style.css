@@ -73,11 +73,13 @@ button:active {
 #first-operator {
     background-color: pink;
     size: 50%;
+    padding-left: 30px;
 }
 
 #second-operator {
     background: rgb(46, 109, 37);
     size: 50%;
+    padding-left: 30px;
 }
 
 .grid {

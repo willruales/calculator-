@@ -1,4 +1,5 @@
 const button = document.querySelector(".grid")
+const action = document.getElementById("action")
 const buttonSelect = button.querySelectorAll("button")
 const display = document.getElementById("first-operator")
 const firstDisplay = document.getElementById("second-operator")
@@ -10,15 +11,20 @@ const operands = {
     first: "",
     operator: "",
     second: "",
+    action: "",
     test: function () {
         let a = parseInt(this.first)
         let b = parseInt(this.second)
         let o = this.operator
-        console.log("see() works")
         operate(o, a, b)
+        equal()
     },
     answer: function () {
-        firstDisplay.innerText = operands.first
+        let action = this.action
+        if (action === "=") {
+            this.test()
+        }
+        operate(action)
     }
 }
 console.log(operands)
@@ -33,12 +39,10 @@ function updateOperands(input) {
     else if (operands.second && input.id === "operator") {
         console.log(operands)
         operands.test()
-        operands.answer()
+        display.innerText += input.textContent
     }
     else if (input.id === "operator") {
-
         operands.operator = input.textContent
-
         display.innerText += input.textContent
     }
 
@@ -46,53 +50,65 @@ function updateOperands(input) {
         operands.second += input.textContent
         display.innerText += input.textContent
     }
-    else if (input.id === "equals") {
-        console.log(operands)
-        operands.test()
-        //firstDisplay.innerText += operands.first
+
+    else if (input.id === "action") {
+        operands.action += input.textContent
         operands.answer()
+
     }
 
 }
 
 function add(a, b) {
-
-    operands.first = a += b //answer
-    console.log("first test", operands.first)
+    operands.first = a += b
 };
 
 const subtract = function (a, b) {
     operands.first = a -= b
-    return console.log("second test", operands.first)
 };
 
-
 const multiply = function (a, b) {
-    return a *= b
+    operands.first = a *= b
 };
 
 const divide = function (a, b) {
-    return a, b
+    operands.first = a /= b
 
 };
+
+const reset = function () {
+    Object.assign(operands, { first: "", second: "", operator: "", action: "" })
+    display.innerText = "";
+    firstDisplay.innerText = "";
+}
+
+const cancel = function () {
+    console.log("C WORKS")
+}
+
+const equal = function () {
+    operands.action = ""
+    operands.second = ""
+    display.innerText = operands.first
+    firstDisplay.innerText = operands.first
+}
 
 function operate(operator, a, b) {
     operands.second = ""
     switch (operator) {
         case '+':
             return add(a, b);
-            break;
         case '-':
             return subtract(a, b);
-            break;
         case "/":
             return divide(a, b)
-            break;
         case '*':
             return multiply(a, b)
         case "C":
             return cancel();
         case "AC":
             return reset();
+        case "=":
+            return equal();
     }
 }
